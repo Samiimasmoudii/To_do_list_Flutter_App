@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>settings.gradle</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+settings.gradle</font>
+</center></td></tr></table>
+<pre><span class="s0">pluginManagement </span><span class="s1">{</span>
+    <span class="s2">def </span><span class="s0">flutterSdkPath </span><span class="s1">= {</span>
+        <span class="s2">def </span><span class="s0">properties </span><span class="s1">= </span><span class="s2">new </span><span class="s0">Properties</span><span class="s1">()</span>
+        <span class="s0">file</span><span class="s1">(</span><span class="s3">&quot;local.properties&quot;</span><span class="s1">)</span><span class="s0">.withInputStream </span><span class="s1">{ </span><span class="s0">properties.load</span><span class="s1">(</span><span class="s0">it</span><span class="s1">) }</span>
+        <span class="s2">def </span><span class="s0">flutterSdkPath </span><span class="s1">= </span><span class="s0">properties.getProperty</span><span class="s1">(</span><span class="s3">&quot;flutter.sdk&quot;</span><span class="s1">)</span>
+        <span class="s2">assert </span><span class="s0">flutterSdkPath </span><span class="s1">!= </span><span class="s2">null</span><span class="s0">, </span><span class="s3">&quot;flutter.sdk not set in local.properties&quot;</span>
+        <span class="s2">return </span><span class="s0">flutterSdkPath</span>
+    <span class="s1">}</span>
+    <span class="s0">settings.ext.flutterSdkPath </span><span class="s1">= </span><span class="s0">flutterSdkPath</span><span class="s1">()</span>
+
+    <span class="s0">includeBuild</span><span class="s1">(</span><span class="s3">&quot;</span><span class="s0">$</span><span class="s1">{</span><span class="s0">settings.ext.flutterSdkPath</span><span class="s1">}</span><span class="s3">/packages/flutter_tools/gradle&quot;</span><span class="s1">)</span>
+
+    <span class="s0">repositories </span><span class="s1">{</span>
+        <span class="s0">google</span><span class="s1">()</span>
+        <span class="s0">mavenCentral</span><span class="s1">()</span>
+        <span class="s0">gradlePluginPortal</span><span class="s1">()</span>
+    <span class="s1">}</span>
+
+    <span class="s0">plugins </span><span class="s1">{</span>
+        <span class="s0">id </span><span class="s3">&quot;dev.flutter.flutter-gradle-plugin&quot;</span>
+
+        <span class="s0">id </span><span class="s3">&quot;dev.flutter.flutter-plugin-loader&quot;</span>
+        <span class="s0">id </span><span class="s3">&quot;com.android.application&quot;</span>
+    <span class="s1">}</span>
+    <span class="s0">resolutionStrategy </span><span class="s1">{</span>
+        <span class="s0">eachPlugin </span><span class="s1">{</span>
+            <span class="s2">if </span><span class="s1">(</span><span class="s0">requested.id.id </span><span class="s1">== </span><span class="s3">&quot;dev.flutter.flutter-gradle-plugin&quot;</span><span class="s1">) {</span>
+                <span class="s0">useModule</span><span class="s1">(</span><span class="s3">&quot;dev.flutter:flutter-gradle-plugin:</span><span class="s0">$</span><span class="s1">{</span><span class="s0">requested.version</span><span class="s1">}</span><span class="s3">&quot;</span><span class="s1">)</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+
+
+<span class="s0">include </span><span class="s3">':app'</span>
+</pre>
+</body>
+</html>

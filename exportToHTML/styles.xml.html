@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>styles.xml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #6aab73;}
+.s3 { color: #bcbec4;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+styles.xml</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot; </span><span class="s1">encoding</span><span class="s2">=&quot;utf-8&quot;</span><span class="s0">?&gt;</span>
+<span class="s0">&lt;resources&gt;</span>
+    <span class="s4">&lt;!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is on --&gt;</span>
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;LaunchTheme&quot; </span><span class="s1">parent</span><span class="s2">=&quot;@android:style/Theme.Black.NoTitleBar&quot;</span><span class="s0">&gt;</span>
+        <span class="s4">&lt;!-- Show a splash screen on the activity. Automatically removed when 
+             the Flutter engine draws its first frame --&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:windowBackground&quot;</span><span class="s0">&gt;</span><span class="s3">@drawable/launch_background</span><span class="s0">&lt;/item&gt;</span>
+    <span class="s0">&lt;/style&gt;</span>
+    <span class="s4">&lt;!-- Theme applied to the Android Window as soon as the process has started. 
+         This theme determines the color of the Android Window while your 
+         Flutter UI initializes, as well as behind your Flutter UI while its 
+         running. 
+ 
+         This Theme is only used starting with V2 of Flutter's Android embedding. --&gt;</span>
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;NormalTheme&quot; </span><span class="s1">parent</span><span class="s2">=&quot;@android:style/Theme.Black.NoTitleBar&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:windowBackground&quot;</span><span class="s0">&gt;</span><span class="s3">?android:colorBackground</span><span class="s0">&lt;/item&gt;</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/resources&gt;</span>
+</pre>
+</body>
+</html>

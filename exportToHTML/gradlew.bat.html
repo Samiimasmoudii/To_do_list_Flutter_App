@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>gradlew.bat</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #c77dbb; font-style: italic;}
+.s6 { color: #2aacb8; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+gradlew.bat</font>
+</center></td></tr></table>
+<pre><span class="s0">@</span><span class="s1">if </span><span class="s0">&quot;%DEBUG%&quot; == &quot;&quot; @</span><span class="s2">echo off</span>
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">##########################################################################</span>
+<span class="s0">@</span><span class="s2">rem</span>
+<span class="s0">@</span><span class="s2">rem  </span><span class="s3">Gradle startup script for Windows</span>
+<span class="s0">@</span><span class="s2">rem</span>
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">##########################################################################</span>
+
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">Set local scope for the variables with windows NT shell</span>
+<span class="s2">if </span><span class="s0">&quot;%OS%&quot;==&quot;</span><span class="s4">Windows_NT</span><span class="s0">&quot; </span><span class="s2">setlocal</span>
+
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.</span>
+<span class="s2">set </span><span class="s0">DEFAULT_JVM_OPTS=</span>
+
+<span class="s2">set </span><span class="s0">DIRNAME=%~dp0</span>
+<span class="s2">if </span><span class="s0">&quot;%DIRNAME%&quot; == &quot;&quot; </span><span class="s2">set </span><span class="s0">DIRNAME=</span><span class="s1">. 
+</span><span class="s2">set </span><span class="s0">APP_BASE_NAME=%~n0</span>
+<span class="s2">set </span><span class="s0">APP_HOME=%DIRNAME%</span>
+
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">Find java.exe</span>
+<span class="s2">if defined </span><span class="s1">JAVA_HOME </span><span class="s2">goto </span><span class="s1">findJavaFromJavaHome 
+</span>
+<span class="s2">set </span><span class="s0">JAVA_EXE=</span><span class="s1">java.exe 
+</span><span class="s0">%JAVA_EXE% </span><span class="s1">-version </span><span class="s0">&gt;</span><span class="s5">NUL </span><span class="s6">2</span><span class="s0">&gt;&amp;</span><span class="s1">1 
+</span><span class="s2">if </span><span class="s0">&quot;%ERRORLEVEL%&quot; == &quot;</span><span class="s4">0</span><span class="s0">&quot; </span><span class="s2">goto </span><span class="s1">init 
+</span>
+<span class="s2">echo</span><span class="s1">. 
+</span><span class="s2">echo </span><span class="s1">ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH. 
+</span><span class="s2">echo</span><span class="s1">. 
+</span><span class="s2">echo </span><span class="s1">Please set the JAVA_HOME variable in your environment to match the 
+</span><span class="s2">echo </span><span class="s1">location of your Java installation. 
+</span>
+<span class="s2">goto </span><span class="s1">fail 
+</span>
+<span class="s0">:</span><span class="s2">findJavaFromJavaHome</span>
+<span class="s2">set </span><span class="s0">JAVA_HOME=%JAVA_HOME:</span><span class="s4">&quot;</span><span class="s0">=%</span>
+<span class="s2">set </span><span class="s0">JAVA_EXE=%JAVA_HOME%</span><span class="s1">/bin/java.exe 
+</span>
+<span class="s2">if exist </span><span class="s0">&quot;%JAVA_EXE%&quot; </span><span class="s2">goto </span><span class="s1">init 
+</span>
+<span class="s2">echo</span><span class="s1">. 
+</span><span class="s2">echo </span><span class="s1">ERROR: JAVA_HOME is set to an invalid directory: </span><span class="s0">%JAVA_HOME%</span>
+<span class="s2">echo</span><span class="s1">. 
+</span><span class="s2">echo </span><span class="s1">Please set the JAVA_HOME variable in your environment to match the 
+</span><span class="s2">echo </span><span class="s1">location of your Java installation. 
+</span>
+<span class="s2">goto </span><span class="s1">fail 
+</span>
+<span class="s0">:</span><span class="s2">init</span>
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">Get command-line arguments, handling Windowz variants</span>
+
+<span class="s2">if </span><span class="s0">not &quot;%OS%&quot; == &quot;</span><span class="s4">Windows_NT</span><span class="s0">&quot; </span><span class="s2">goto </span><span class="s1">win9xME_args 
+</span><span class="s2">if </span><span class="s0">&quot;</span><span class="s4">%@eval[2+2]</span><span class="s0">&quot; == &quot;</span><span class="s4">4</span><span class="s0">&quot; </span><span class="s2">goto </span><span class="s1">4NT_args 
+</span>
+<span class="s0">:</span><span class="s2">win9xME_args</span>
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">Slurp the command line arguments.</span>
+<span class="s2">set </span><span class="s0">CMD_LINE_ARGS=</span>
+<span class="s2">set </span><span class="s0">_SKIP=</span><span class="s6">2</span>
+
+<span class="s0">:</span><span class="s2">win9xME_args_slurp</span>
+<span class="s2">if </span><span class="s0">&quot;</span><span class="s4">x</span><span class="s0">%~1&quot; == &quot;</span><span class="s4">x</span><span class="s0">&quot; </span><span class="s2">goto </span><span class="s1">execute 
+</span>
+<span class="s2">set </span><span class="s0">CMD_LINE_ARGS=%*</span>
+<span class="s2">goto </span><span class="s1">execute 
+</span>
+<span class="s0">:</span><span class="s2">4NT_args</span>
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">Get arguments from the 4NT Shell from JP Software</span>
+<span class="s2">set </span><span class="s0">CMD_LINE_ARGS=</span><span class="s1">%$ 
+</span>
+<span class="s0">:</span><span class="s2">execute</span>
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">Setup the command line</span>
+
+<span class="s2">set </span><span class="s0">CLASSPATH=%APP_HOME%</span><span class="s1">\gradle\wrapper\gradle-wrapper.jar 
+</span>
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">Execute Gradle</span>
+<span class="s0">&quot;%JAVA_EXE%&quot; %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% &quot;</span><span class="s4">-Dorg.gradle.appname=</span><span class="s0">%APP_BASE_NAME%&quot; </span><span class="s1">-classpath </span><span class="s0">&quot;%CLASSPATH%&quot; </span><span class="s1">org.gradle.wrapper.GradleWrapperMain </span><span class="s0">%CMD_LINE_ARGS%</span>
+
+<span class="s0">:</span><span class="s2">end</span>
+<span class="s0">@</span><span class="s2">rem </span><span class="s3">End local scope for the variables with windows NT shell</span>
+<span class="s2">if </span><span class="s0">&quot;%ERRORLEVEL%&quot;==&quot;</span><span class="s4">0</span><span class="s0">&quot; </span><span class="s2">goto </span><span class="s1">mainEnd 
+</span>
+<span class="s0">:</span><span class="s2">fail</span>
+<span class="s2">rem </span><span class="s3">Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of</span>
+<span class="s2">rem </span><span class="s3">the _cmd.exe /c_ return code!</span>
+<span class="s2">if  </span><span class="s0">not &quot;&quot; == &quot;%GRADLE_EXIT_CONSOLE%&quot; </span><span class="s2">exit </span><span class="s6">1</span>
+<span class="s2">exit </span><span class="s1">/b </span><span class="s6">1</span>
+
+<span class="s0">:</span><span class="s2">mainEnd</span>
+<span class="s2">if </span><span class="s0">&quot;%OS%&quot;==&quot;</span><span class="s4">Windows_NT</span><span class="s0">&quot; </span><span class="s2">endlocal</span>
+
+<span class="s0">:</span><span class="s2">omega</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>build.gradle</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #bcbec4;}
+.s2 { color: #6aab73;}
+.s3 { color: #cf8e6d;}
+.s4 { color: #2aacb8;}
+.s5 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+build.gradle</font>
+</center></td></tr></table>
+<pre><span class="s0">plugins </span><span class="s1">{</span>
+    <span class="s0">id </span><span class="s2">&quot;com.android.application&quot;</span>
+    <span class="s0">id </span><span class="s2">&quot;kotlin-android&quot;</span>
+    <span class="s0">id </span><span class="s2">&quot;dev.flutter.flutter-gradle-plugin&quot;</span>
+    <span class="s0">id </span><span class="s2">&quot;com.google.gms.google-services&quot;</span>
+
+    <span class="s1">}</span>
+
+<span class="s3">def </span><span class="s0">localProperties </span><span class="s1">= </span><span class="s3">new </span><span class="s0">Properties</span><span class="s1">()</span>
+<span class="s3">def </span><span class="s0">localPropertiesFile </span><span class="s1">= </span><span class="s0">rootProject.file</span><span class="s1">(</span><span class="s2">'local.properties'</span><span class="s1">)</span>
+<span class="s3">if </span><span class="s1">(</span><span class="s0">localPropertiesFile.exists</span><span class="s1">()) {</span>
+    <span class="s0">localPropertiesFile.withReader</span><span class="s1">(</span><span class="s2">'UTF-8'</span><span class="s1">) { </span><span class="s0">reader -&gt;</span>
+        <span class="s0">localProperties.load</span><span class="s1">(</span><span class="s0">reader</span><span class="s1">)</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+<span class="s3">def </span><span class="s0">flutterVersionCode </span><span class="s1">= </span><span class="s0">localProperties.getProperty</span><span class="s1">(</span><span class="s2">'flutter.versionCode'</span><span class="s1">)</span>
+<span class="s3">if </span><span class="s1">(</span><span class="s0">flutterVersionCode </span><span class="s1">== </span><span class="s3">null</span><span class="s1">) {</span>
+    <span class="s0">flutterVersionCode </span><span class="s1">= </span><span class="s2">'1'</span>
+<span class="s1">}</span>
+
+<span class="s3">def </span><span class="s0">flutterVersionName </span><span class="s1">= </span><span class="s0">localProperties.getProperty</span><span class="s1">(</span><span class="s2">'flutter.versionName'</span><span class="s1">)</span>
+<span class="s3">if </span><span class="s1">(</span><span class="s0">flutterVersionName </span><span class="s1">== </span><span class="s3">null</span><span class="s1">) {</span>
+    <span class="s0">flutterVersionName </span><span class="s1">= </span><span class="s2">'1.0'</span>
+<span class="s1">}</span>
+
+<span class="s0">android </span><span class="s1">{</span>
+    <span class="s0">namespace </span><span class="s2">&quot;com.example.to_do_list&quot;</span>
+    <span class="s0">compileSdkVersion </span><span class="s4">34</span>
+    <span class="s0">ndkVersion flutter.ndkVersion</span>
+
+    <span class="s0">compileOptions </span><span class="s1">{</span>
+        <span class="s0">sourceCompatibility JavaVersion.VERSION_1_8</span>
+        <span class="s0">targetCompatibility JavaVersion.VERSION_1_8</span>
+    <span class="s1">}</span>
+
+    <span class="s0">kotlinOptions </span><span class="s1">{</span>
+        <span class="s0">jvmTarget </span><span class="s1">= </span><span class="s2">'1.8'</span>
+    <span class="s1">}</span>
+
+    <span class="s0">sourceSets </span><span class="s1">{</span>
+        <span class="s0">main.java.srcDirs </span><span class="s1">+= </span><span class="s2">'src/main/kotlin'</span>
+    <span class="s1">}</span>
+
+    <span class="s0">defaultConfig </span><span class="s1">{</span>
+        <span class="s5">// TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).</span>
+        <span class="s0">applicationId </span><span class="s2">&quot;com.example.to_do_list&quot;</span>
+        <span class="s5">// You can update the following values to match your application needs.</span>
+        <span class="s5">// For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.</span>
+        <span class="s0">minSdkVersion </span><span class="s4">21</span>
+        <span class="s0">targetSdkVersion </span><span class="s4">34</span>
+        <span class="s0">versionCode flutterVersionCode.toInteger</span><span class="s1">()</span>
+        <span class="s0">versionName flutterVersionName</span>
+    <span class="s1">}</span>
+
+    <span class="s0">buildTypes </span><span class="s1">{</span>
+        <span class="s0">release </span><span class="s1">{</span>
+            <span class="s5">// TODO: Add your own signing config for the release build.</span>
+            <span class="s5">// Signing with the debug keys for now, so `flutter run --release` works.</span>
+            <span class="s0">signingConfig signingConfigs.debug</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+<span class="s0">flutter </span><span class="s1">{</span>
+    <span class="s0">source </span><span class="s2">'../..'</span>
+<span class="s1">}</span>
+
+<span class="s0">dependencies </span><span class="s1">{</span>
+    <span class="s0">implementation</span><span class="s1">(</span><span class="s0">platform</span><span class="s1">(</span><span class="s2">&quot;com.google.firebase:firebase-bom:33.0.0&quot;</span><span class="s1">))</span>
+    <span class="s0">implementation</span><span class="s1">(</span><span class="s2">&quot;com.google.firebase:firebase-analytics&quot;</span><span class="s1">)</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
